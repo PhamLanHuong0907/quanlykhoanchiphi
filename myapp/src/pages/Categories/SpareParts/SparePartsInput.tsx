@@ -26,8 +26,8 @@ interface CostRow {
 const SparePartsInput: React.FC<SparePartsInputProps> = ({ onClose, onSuccess }) => {
   // ====== API setup ======
   const partPath = "/api/catalog/part";
-  const unitPath = "/api/catalog/unitofmeasure";
-  const equipmentPath = "/api/catalog/equipment"; // API path for equipment
+  const unitPath = "/api/catalog/unitofmeasure?pageIndex=1&pageSize=1000";
+  const equipmentPath = "/api/catalog/equipment?pageIndex=1&pageSize=1000"; // API path for equipment
 
   // API for POSTing Spare Part data
   const { postData, loading: saving, error: saveError } = useApi(partPath);
