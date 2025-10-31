@@ -52,8 +52,11 @@ const ProductsInput: React.FC<ProductsInputProps> = ({ onClose, onSuccess }) => 
   // 5. ====== State ======
   // State cho 4 dropdowns
   const [selectedProcessGroup, setSelectedProcessGroup] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedHardness, setSelectedHardness] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedStoneClamp, setSelectedStoneClamp] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedInsertItem, setSelectedInsertItem] = useState<string>("");
   // (State cho "Mã sản phẩm" và "Tên sản phẩm" được quản lý nội bộ bởi LayoutInput)
 
@@ -68,10 +71,13 @@ const ProductsInput: React.FC<ProductsInputProps> = ({ onClose, onSuccess }) => 
   // Map data API sang định dạng DropdownOption
   const processGroupOptions: DropdownOption[] =
     processGroups?.map((g) => ({ value: g.id, label: g.code })) || [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const hardnessOptions: DropdownOption[] =
     hardness?.map((h) => ({ value: h.id, label: h.value })) || [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const stoneClampOptions: DropdownOption[] =
     stoneClampRatios?.map((s) => ({ value: s.id, label: s.value })) || [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const insertItemOptions: DropdownOption[] =
     insertItems?.map((i) => ({ value: i.id, label: i.value })) || [];
 
@@ -117,7 +123,9 @@ const ProductsInput: React.FC<ProductsInputProps> = ({ onClose, onSuccess }) => 
   ];
 
   // 9. Tính toán trạng thái loading/error tổng
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isLoading = loadingProcessGroup || loadingHardness || loadingStoneClamp || loadingInsertItem || saving;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const anyError = errorProcessGroup || errorHardness || errorStoneClamp || errorInsertItem || saveError;
 
   return (

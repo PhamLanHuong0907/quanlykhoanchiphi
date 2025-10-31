@@ -1,4 +1,3 @@
-import React from "react";
 import PATHS from "../../../hooks/path";
 import LayoutInput from "../../../layout/layout_input";
 import { useApi } from "../../../hooks/useFetchData";
@@ -10,7 +9,7 @@ interface AdjustmentFactor01InputProps {
 
 export default function AdjustmentFactor01Input({ onClose, onSuccess }: AdjustmentFactor01InputProps) {
   const basePath = `api/adjustment/adjustmentfactor`;
-  const { postData, loading: saving, error: saveError } = useApi(basePath);
+  const { postData } = useApi(basePath);
 
   const handleSubmit = async (data: Record<string, string>) => {
     // ... (logic submit của bạn giữ nguyên) ...

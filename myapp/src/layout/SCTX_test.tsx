@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 // 1. Import component của bạn (tên file là SCTX)
 import SlideRailGroupTable from './SCTX';

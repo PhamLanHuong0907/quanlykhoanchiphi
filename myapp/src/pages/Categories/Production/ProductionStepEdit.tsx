@@ -29,15 +29,12 @@ const ProductionStepEdit: React.FC<ProductionStepEditProps> = ({
   const {
     fetchById,
     putData,
-    loading: loadingStep,
-    error: errorStep,
   } = useApi<ProductionStep>(stepPath);
 
   const {
     fetchData: fetchGroups,
     data: processGroups,
     loading: loadingGroups,
-    error: errorGroups,
   } = useApi<{ id: string; name: string }>(groupPath);
 
   // ====== State ======

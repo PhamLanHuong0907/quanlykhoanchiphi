@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"; // 1. Thêm React, useEffect, useState
+import { useEffect, useState } from "react"; // 1. Thêm React, useEffect, useState
 import PATHS from "../../../hooks/path";
 import LayoutInput from "../../../layout/layout_input";
 import { useApi } from "../../../hooks/useFetchData"; // 2. Thêm useApi
@@ -20,7 +20,7 @@ interface AdjustmentFactor {
 export default function AdjustmentFactor01Edit({ id, onClose, onSuccess }: AdjustmentFactor01EditProps) {
   // 5. Khai báo API
   const basePath = `api/adjustment/adjustmentfactor`;
-  const { fetchById, putData, loading: loadingData, error: dataError } =
+  const { fetchById, putData } =
     useApi<AdjustmentFactor>(basePath);
 
   // 6. State

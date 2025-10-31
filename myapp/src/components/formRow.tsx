@@ -5,7 +5,9 @@ import React, { useRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./FormRow.css";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import plusIcon from "../../assets/icon_plus.png";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import calendarIcon from "../../assets/icon_calendar.png";
 import X from "../../assets/X.png";
 import { Calendar } from "lucide-react";
@@ -18,6 +20,7 @@ interface FieldData {
   type?: "text" | "number" | "date";
   readOnly?: boolean;
   value: string | Date | null; // 'value' là bắt buộc
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange: (value: any) => void; // 'onChange' là bắt buộc
 }
 

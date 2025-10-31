@@ -48,11 +48,11 @@ const EquipmentEdit: React.FC<EquipmentEditProps> = ({ id, onClose, onSuccess })
   const unitPath = "/api/catalog/unitofmeasure";
 
   // API cho Equipment (GET by Id, PUT)
-  const { fetchById, putData, loading: loadingEquipment, error: errorEquipment } =
+  const { fetchById, putData } =
     useApi<Equipment>(equipmentPath);
   
   // API cho Đơn vị tính
-  const { fetchData: fetchUnits, data: units, loading: loadingUnit, error: errorUnit } =
+  const { fetchData: fetchUnits, data: units, loading: loadingUnit } =
     useApi<{ id: string; name: string }>(unitPath);
 
   // ====== State ======
@@ -158,6 +158,7 @@ const EquipmentEdit: React.FC<EquipmentEditProps> = ({ id, onClose, onSuccess })
   const handleCostRowChange = (
     rowIndex: number,
     fieldName: keyof CostRow,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any
   ) => {
     setCostRows(currentRows =>

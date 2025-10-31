@@ -32,18 +32,18 @@ const EquipmentInput: React.FC<EquipmentInputProps> = ({ onClose, onSuccess }) =
   const unitPath = "/api/catalog/unitofmeasure";
 
   // Bổ sung: API cho dropdown ĐVT
-  const { fetchData: fetchUnits, data: units, loading: loadingUnit, error: errorUnit } =
+  const { fetchData: fetchUnits, data: units, loading: loadingUnit } =
     useApi<{ id: string; name: string }>(unitPath);
 
   // Sửa đổi: Đổi tên loading/error
-  const { postData, loading: saving, error: saveError } = useApi(equipmentPath);
+  const { postData } = useApi(equipmentPath);
 
   // ====== State ======
   // Bổ sung: State cho dropdown
   const [selectedUnit, setSelectedUnit] = useState<string>("");
 
   // Bổ sung: State cho các trường text
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     code: "",
     name: "",
   });
@@ -114,6 +114,7 @@ const EquipmentInput: React.FC<EquipmentInputProps> = ({ onClose, onSuccess }) =
   const handleCostRowChange = (
     rowIndex: number,
     fieldName: keyof CostRow,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any
   ) => {
     setCostRows(currentRows =>

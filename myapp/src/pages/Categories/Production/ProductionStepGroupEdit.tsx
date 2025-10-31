@@ -23,7 +23,7 @@ const ProductionStepGroupEdit: React.FC<ProductionStepGroupEditProps> = ({
 }) => {
   const basePath = `/api/process/processgroup`;
   // Assuming useApi<ProductionStepGroupData> correctly fetches/puts this type
-  const { fetchById, putData, loading, error } = useApi<ProductionStepGroupData>(basePath);
+  const { fetchById, putData } = useApi<ProductionStepGroupData>(basePath);
 
   // 2. State Separation
   const [currentData, setCurrentData] = useState<ProductionStepGroupData | null>(null); // State for fetched data

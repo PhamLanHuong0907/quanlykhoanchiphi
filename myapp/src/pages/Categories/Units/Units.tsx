@@ -8,9 +8,10 @@ import UnitsInput from "./UnitsInput";
 import { useApi } from "../../../hooks/useFetchData";
 
 const Unit: React.FC = () => {
-  // ✅ tách riêng URL:
+  // ✅ tách riêng URL: (Đã tối ưu)
   const basePath = `/api/catalog/unitofmeasure`; // dùng cho POST / PUT / DELETE
   const fetchPath = `${basePath}?pageIndex=1&pageSize=1000`; // dùng cho GET
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, loading, error, refresh } = useApi<any>(fetchPath);
 
   const columns = [
@@ -21,10 +22,11 @@ const Unit: React.FC = () => {
     </div>,
     "Sửa",
   ];
-  const columnWidths = [6, 90 ,4];
+  const columnWidths = [6, 90, 4]; // (Giữ nguyên)
 
   const tableData =
     data && Array.isArray(data)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ? data.map((row: any, index: number) => [
           index + 1,
           row.name,
@@ -47,11 +49,13 @@ const Unit: React.FC = () => {
           }
         `}</style>
 
-        {loading ? (
-          <div className="text-center text-gray-500 py-10">Đang tải dữ liệu...</div>
-        ) : error ? (
+        {/* SỬA ĐỔI: Cập nhật logic return */}
+
+        {/* 1. Ưu tiên hiển thị lỗi */}
+        {error ? (
           <div className="text-center text-red-500 py-10">Lỗi: {error}</div>
         ) : (
+          /* 2. Luôn hiển thị bảng (ngay cả khi đang tải) */
           <AdvancedTable
             title01="Danh mục / Đơn vị tính"
             title="Đơn vị tính"
@@ -63,6 +67,21 @@ const Unit: React.FC = () => {
             onDeleted={refresh}   // ✅ tự refresh sau khi xóa
             columnLefts={['undefined', 'undefined', 'undefined']}
           />
+        )}
+        
+        {/* 3. Hiển thị loading overlay riêng biệt */}
+        {loading && (
+          <div style={{
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)',
+            background: 'rgba(255, 255, 255, 0.7)',
+            padding: '10px 20px',
+            borderRadius: '8px',
+            zIndex: 100
+          }}>
+          </div>
         )}
       </div>
     </Layout>

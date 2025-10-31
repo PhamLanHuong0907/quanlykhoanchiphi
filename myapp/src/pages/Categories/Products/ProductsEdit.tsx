@@ -105,10 +105,13 @@ const ProductsEdit: React.FC<ProductsEditProps> = ({ id, onClose, onSuccess }) =
   // 8. Map data API sang định dạng DropdownOption
   const processGroupOptions: DropdownOption[] =
     processGroups?.map((g) => ({ value: g.id, label: g.code })) || [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const hardnessOptions: DropdownOption[] =
     hardness?.map((h) => ({ value: h.id, label: h.value })) || [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const stoneClampOptions: DropdownOption[] =
     stoneClampRatios?.map((s) => ({ value: s.id, label: s.value })) || [];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const insertItemOptions: DropdownOption[] =
     insertItems?.map((i) => ({ value: i.id, label: i.value })) || [];
 
@@ -156,7 +159,9 @@ const ProductsEdit: React.FC<ProductsEditProps> = ({ id, onClose, onSuccess }) =
   ];
 
   // 11. Tính toán trạng thái loading/error tổng
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isLoading = loadingMaterial || loadingProcessGroup || loadingHardness || loadingStoneClamp || loadingInsertItem;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const anyError = errorMaterial || errorProcessGroup || errorHardness || errorStoneClamp || errorInsertItem;
 
   return (

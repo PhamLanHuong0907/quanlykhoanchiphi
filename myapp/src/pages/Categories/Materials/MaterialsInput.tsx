@@ -29,16 +29,16 @@ const MaterialsInput: React.FC<MaterialsInputProps> = ({ onClose, onSuccess }) =
   const assignmentCodePath = "/api/catalog/assignmentcode";
   const unitPath = "/api/catalog/unitofmeasure";
 
-  const { fetchData: fetchAssignmentCodes, data: assignmentCodes, loading: loadingAssignment, error: errorAssignment } = // Bổ sung error
+  const { fetchData: fetchAssignmentCodes, data: assignmentCodes, loading: loadingAssignment } = // Bổ sung error
     useApi<{ id: string; code: string }>(assignmentCodePath);
-  const { fetchData: fetchUnits, data: units, loading: loadingUnit, error: errorUnit } = // Bổ sung error
+  const { fetchData: fetchUnits, data: units, loading: loadingUnit } = // Bổ sung error
     useApi<{ id: string; name: string }>(unitPath);
-  const { postData, loading: saving, error: saveError } = useApi(materialPath);
+  const { postData } = useApi(materialPath);
 
   // ====== State ======
   const [selectedAssignmentCode, setSelectedAssignmentCode] = useState<string>("");
   const [selectedUnit, setSelectedUnit] = useState<string>("");
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     code: "",
     name: "",
     // SỬA ĐỔI: Xóa 'amount' khỏi đây
@@ -114,6 +114,7 @@ const MaterialsInput: React.FC<MaterialsInputProps> = ({ onClose, onSuccess }) =
   const handleCostRowChange = (
     rowIndex: number,
     fieldName: keyof CostRow, // 'startDate', 'endDate', hoặc 'amount'
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any
   ) => {
     setCostRows(currentRows =>

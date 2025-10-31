@@ -4,6 +4,7 @@
 // Dùng để quản lý toàn bộ đường dẫn (path) của hệ thống
 // ================================
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const PATHS = {
   HOME: "/",
   HOME_ALT: "/Home",

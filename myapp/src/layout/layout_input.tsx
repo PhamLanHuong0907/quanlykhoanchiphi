@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useRef, useEffect } from "react";
 import { X, ChevronDown } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";

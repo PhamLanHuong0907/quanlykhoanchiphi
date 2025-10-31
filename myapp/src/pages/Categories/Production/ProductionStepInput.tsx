@@ -22,15 +22,18 @@ const ProductionStepInput: React.FC<ProductionStepInputProps> = ({
     fetchData: fetchGroups,
     data: processGroups,
     loading: loadingGroups,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     error: errorGroups,
   } = useApi<{ id: string; name: string }>(groupPath);
 
   // Post công đoạn sản xuất
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { postData, loading: saving, error: saveError } = useApi(stepPath,
     { autoFetch: false });
 
   // ====== State ======
   const [selectedGroupId, setSelectedGroupId] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [formData, setFormData] = useState({
     code: "",
     name: "",

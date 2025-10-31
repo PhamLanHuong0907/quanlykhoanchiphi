@@ -44,12 +44,12 @@ const MaterialsEdit: React.FC<MaterialsEditProps> = ({ id, onClose, onSuccess })
   const unitPath = "/api/catalog/unitofmeasure";
 
   // SỬA ĐỔI: useApi<Material> dùng interface 'phức tạp' ở trên
-  const { fetchById, putData, loading: loadingMaterial, error: errorMaterial } =
+  const { fetchById, putData } =
     useApi<Material>(materialPath);
   
-  const { fetchData: fetchAssignmentCodes, data: assignmentCodes, loading: loadingAssignment, error: errorAssignment } =
+  const { fetchData: fetchAssignmentCodes, data: assignmentCodes, loading: loadingAssignment } =
     useApi<{ id: string; code: string }>(assignmentCodePath);
-  const { fetchData: fetchUnits, data: units, loading: loadingUnit, error: errorUnit } =
+  const { fetchData: fetchUnits, data: units, loading: loadingUnit } =
     useApi<{ id: string; name: string }>(unitPath);
 
   // ====== State ======
@@ -153,6 +153,7 @@ const MaterialsEdit: React.FC<MaterialsEditProps> = ({ id, onClose, onSuccess })
   const handleCostRowChange = (
     rowIndex: number,
     fieldName: keyof CostRow,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any
   ) => {
     setCostRows(currentRows =>
