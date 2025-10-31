@@ -1,0 +1,223 @@
+import React, { useEffect, useState } from "react";
+import LayoutInput from "../../../layout/layout_input";
+import FormRow from "../../../components/formRow"; // Make sure FormRow.tsx is updated
+import PATHS from "../../../hooks/path";
+import { useApi } from "../../../hooks/useFetchData";
+import DropdownMenuSearchable from "../../../components/dropdown_menu_searchable";
+
+interface SparePartsInputProps {
+  onClose?: () => void;
+  onSuccess?: () => void;
+}
+
+// Interfaces for dropdowns and cost rows
+interface DropdownOption {
+  value: string;
+  label: string;
+}
+
+interface CostRow {
+  id: number;
+  startDate: string;
+  endDate: string;
+  amount: string;
+}
+
+const SparePartsInput: React.FC<SparePartsInputProps> = ({ onClose, onSuccess }) => {
+  // ====== API setup ======
+  const partPath = "/api/catalog/part";
+  const unitPath = "/api/catalog/unitofmeasure";
+  const equipmentPath = "/api/catalog/equipment"; // API path for equipment
+
+  // API for POSTing Spare Part data
+  const { postData, loading: saving, error: saveError } = useApi(partPath);
+
+  // API for fetching Units dropdown
+  const { fetchData: fetchUnits, data: units, loading: loadingUnit, error: errorUnit } =
+    useApi<{ id: string; name: string }>(unitPath);
+
+  // API for fetching Equipment dropdown
+  const { fetchData: fetchEquipments, data: equipments, loading: loadingEquipment, error: errorEquipment } =
+    useApi<{ id: string; code: string; name?: string }>(equipmentPath); // Assuming equipment has code/name
+
+  // ====== State ======
+  const [selectedUnitId, setSelectedUnitId] = useState<string>("");
+  const [selectedEquipmentId, setSelectedEquipmentId] = useState<string>(""); // State for selected equipment
+  const [formData, setFormData] = useState({
+    code: "", // Mã phụ tùng
+    name: "", // Tên phụ tùng
+  });
+  const [costRows, setCostRows] = useState<CostRow[]>([
+    { id: Date.now(), startDate: "", endDate: "", amount: "" } // Initial cost row
+  ]);
+
+  // ====== Load dropdowns ======
+  useEffect(() => {
+    fetchUnits();
+    fetchEquipments();
+  }, [fetchUnits, fetchEquipments]);
+
+  // Map options for dropdowns
+  const unitOptions: DropdownOption[] =
+    units?.map((u) => ({ value: u.id, label: u.name })) || [];
+  
+  const equipmentOptions: DropdownOption[] =
+    equipments?.map((e) => ({ value: e.id, label: `${e.code} - ${e.name || ''}` })) || []; // Combine code and name for label
+
+  // ====== Handle submit ======
+  const handleSubmit = async (data: Record<string, string>) => {
+    // Get data from LayoutInput's fields
+    const code = data["Mã phụ tùng"]?.trim();
+    const name = data["Tên phụ tùng"]?.trim();
+
+    // Get data from state
+    const unitOfMeasureId = selectedUnitId;
+    const equipmentId = selectedEquipmentId;
+
+    // Validation
+    if (!equipmentId) return alert("⚠️ Vui lòng chọn Thiết bị!");
+    if (!code) return alert("⚠️ Vui lòng nhập Mã phụ tùng!");
+    if (!name) return alert("⚠️ Vui lòng nhập Tên phụ tùng!");
+    if (!unitOfMeasureId) return alert("⚠️ Vui lòng chọn Đơn vị tính!");
+
+    // Construct payload according to JSON structure
+    const payload = {
+      code,
+      name,
+      unitOfMeasureId,
+      equipmentId,
+      costs: costRows.map(row => ({
+        startDate: row.startDate || new Date().toISOString(),
+        endDate: row.endDate || new Date().toISOString(),
+        costType: 1, // Assuming costType is always 1 for spare parts
+        amount: parseFloat(row.amount || "0"),
+      })),
+    };
+
+    console.log("📤 POST payload:", payload);
+
+    // Call API to post data
+    await postData(payload, () => {
+      console.log("✅ Tạo phụ tùng thành công!");
+      onSuccess?.(); // Refresh table
+      onClose?.();   // Close popup
+    });
+  };
+
+  // ====== Fields definition for LayoutInput ======
+  const fields = [
+    // Use custom slots for dropdowns
+    { type: "custom1" as const }, // Placeholder for Equipment dropdown
+    { label: "Mã phụ tùng", type: "text" as const, placeholder: "Nhập mã phụ tùng, ví dụ: BCTB" },
+    { label: "Tên phụ tùng", type: "text" as const, placeholder: "Nhập tên phụ tùng, ví dụ: Bánh công tác bơm LT50-50" },
+    { type: "custom2" as const }, // Placeholder for Unit of Measure dropdown
+  ];
+
+  // ====== Cost Row Management Logic ======
+  const handleCostRowChange = (
+    rowIndex: number,
+    fieldName: keyof CostRow,
+    value: any
+  ) => {
+    setCostRows(currentRows =>
+      currentRows.map((row, index) => {
+        if (index === rowIndex) {
+          return { ...row, [fieldName]: value };
+        }
+        return row;
+      })
+    );
+  };
+
+  const handleAddCostRow = () => {
+    setCostRows(currentRows => [
+      ...currentRows,
+      { id: Date.now(), startDate: "", endDate: "", amount: "" }
+    ]);
+  };
+
+  const handleRemoveCostRow = (rowIndex: number) => {
+    if (costRows.length <= 1) return;
+    setCostRows(currentRows => currentRows.filter((_, index) => index !== rowIndex));
+  };
+
+  // Prepare 'rows' prop for FormRow component
+  const formRowPropData = costRows.map((row, index) => [
+    {
+      label: "Ngày bắt đầu",
+      placeholder: "dd/mm/yy",
+      type: "date" as const,
+      value: row.startDate ? new Date(row.startDate) : null,
+      onChange: (date: Date | null) =>
+        handleCostRowChange(index, 'startDate', date?.toISOString() || ""),
+    },
+    {
+      label: "Ngày kết thúc",
+      placeholder: "dd/mm/yy",
+      type: "date" as const,
+      value: row.endDate ? new Date(row.endDate) : null,
+      onChange: (date: Date | null) =>
+        handleCostRowChange(index, 'endDate', date?.toISOString() || ""),
+    },
+    {
+      label: "Đơn giá", // Changed label from "Đơn giá vật tư"
+      placeholder: "Nhập đơn giá phụ tùng", // Changed placeholder
+      type: "number" as const,
+      value: row.amount,
+      onChange: (value: string) =>
+        handleCostRowChange(index, 'amount', value),
+    },
+  ]);
+
+  return (
+      <LayoutInput
+        title01="Danh mục / Phụ tùng"
+        title="Tạo mới Phụ tùng"
+        fields={fields}
+        onSubmit={handleSubmit}
+        // Pass FormRow management props
+        formRowComponent={
+          <FormRow
+            title="Đơn giá phụ tùng" // Changed title from "Bảng vật tư"
+            title1="phụ tùng"
+            rows={formRowPropData}
+            onAdd={handleAddCostRow}
+            onRemove={handleRemoveCostRow}
+          />
+        }
+        closePath={PATHS.SPARE_PARTS.LIST} // Ensure this path is correct
+        onClose={onClose}
+        initialData={{
+          // Link text fields to formData state
+          "Mã phụ tùng": formData.code,
+          "Tên phụ tùng": formData.name,
+        }}
+      >
+        {/* Custom slot for Equipment dropdown */}
+        <div className="custom1" key={1}>
+          <DropdownMenuSearchable
+            label="Thiết bị"
+            options={equipmentOptions}
+            value={selectedEquipmentId}
+            onChange={setSelectedEquipmentId}
+            placeholder="Chọn thiết bị..."
+            isDisabled={loadingEquipment}
+          />
+        </div>
+
+        {/* Custom slot for Unit of Measure dropdown */}
+        <div className="custom2" key={2}>
+          <DropdownMenuSearchable
+            label="Đơn vị tính"
+            options={unitOptions}
+            value={selectedUnitId}
+            onChange={setSelectedUnitId}
+            placeholder="Chọn đơn vị tính..."
+            isDisabled={loadingUnit}
+          />
+        </div>
+      </LayoutInput>
+  );
+};
+
+export default SparePartsInput;

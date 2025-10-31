@@ -1,0 +1,175 @@
+/* File: TransactionSelector.css
+Mô tả: CSS cho component TransactionSelector,
+được chuyển đổi từ Tailwind và đối tượng styles của react-select.
+*/
+
+/* === Container Chính === */
+.transaction-container {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+background-color: "transparent";
+border: none;
+width: 720px;
+margin-top: 7px;
+}
+
+/* === Label cho Dropdown === */
+.transaction-label {
+display: block;
+font-weight: 500;
+margin-bottom: 0.25rem;
+font-size: 0.875rem;
+line-height: 1.25rem;
+color: #333333;
+}
+
+/* === Cấu trúc Grid === */
+.transaction-grid-container {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+}
+
+.transaction-grid {
+display: grid;
+  
+  /* SỬA QUAN TRỌNG:
+    - 5 cột đầu (1fr) sẽ tự động chia đều không gian còn lại.
+    - Cột thứ 6 (cột nút 'x') được gán chiều rộng CỐ ĐỊNH (ví dụ: 40px).
+    - Bằng cách này, 5 cột '1fr' sẽ LUÔN có chiều rộng bằng nhau
+      ở cả hàng header và hàng dữ liệu, giúp chúng thẳng hàng.
+  */
+grid-template-columns: repeat(5, 1fr) 40px;
+
+  /* 'gap: 30px' chỉ áp dụng cho khoảng cách giữa các cột */
+column-gap: 30px;
+
+width: 720px;
+}
+
+/* === Hàng Tiêu đề Grid === */
+.transaction-grid-header {
+padding-left: 0.25rem;
+  /* Thêm align-items để label nằm trên cùng (nếu cần) */
+  align-items: start;
+}
+.transaction-grid-select {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem;
+  width: 100%; /* Đảm bảo nó lấp đầy ô grid */
+}
+
+.transaction-header-label {
+color: #999999;
+font-size: 13px;
+line-height: 1rem;
+font-weight: 500;
+  /* Yêu cầu của bạn: label nằm bên trái (đã có) */
+text-align: left;
+border: none;
+  /* Xóa width cố định cũ */
+}
+
+/* === Hàng Dữ liệu Grid === */
+.transaction-grid-row {
+/* items-center */
+align-items: center;
+}
+
+/* === Các ô Input === */
+.transaction-input {
+border: 1px solid rgba(157, 157, 157, 1);
+border-radius: 0.25rem;
+padding-left: 0.375rem;
+padding-top: 0.37em;
+padding-bottom: 0.375rem;
+padding-right: 0;
+font-size: 0.875rem;
+line-height: 1.25rem;
+width: 100%;
+}
+
+.transaction-input-readonly {
+background-color: rgba(242, 242, 242, 1);
+}
+
+.transaction-input-center {
+text-align: center;
+}
+
+.transaction-input-right {
+text-align: center;
+}
+
+/* === Nút Xóa Hàng === */
+.transaction-remove-button {
+color: #ef4444;
+transition-property: color;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+transition-duration: 150ms;
+  /* Căn giữa nút trong cột 40px */
+justify-self: center;
+align-self: center; 
+border: 1px solid #ef4444;
+background: none;
+cursor: pointer;
+padding: 0;
+right: 0px;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+/* Bạn có thể đặt kích thước cụ thể nếu muốn */
+  /* width: 24px; */
+  /* height: 24px; */
+}
+
+.transaction-remove-button:hover {
+color: #ef4444;
+background-color: coral;
+}
+
+/* =====================================
+CSS cho React-Select (classNamePrefix="transaction-select")
+=====================================
+*/
+
+/* Wrapper chung (cho text-sm) */
+.transaction-select-wrapper {
+font-size: 0.875rem;
+line-height: 1.25rem;
+}
+
+/* Khung control chính */
+.transaction-select__control {
+border-radius: 8px !important;
+border-color:rgba(157, 157, 157, 1) !important;
+box-shadow: none !important;
+}
+
+.transaction-select__control:hover {
+border-color: #999 !important;
+}
+
+/* "Viên thuốc" chứa giá trị đã chọn */
+.transaction-select__multi-value {
+background-color: rgba(101, 146, 183, 1) !important;
+border-radius: 6px !important;
+}
+
+/* Nhãn text bên trong "viên thuốc" */
+.transaction-select__multi-value__label {
+color: #ffffff !important;
+font-weight: 500 !important;
+padding-right: 6px !important;
+}
+
+/* Nút 'x' bên trong "viên thuốc" */
+.transaction-select__multi-value__remove {
+color: #ffffff !important;
+}
+
+.transaction-select__multi-value__remove:hover {
+background-color: #3b82f6 !important;
+color: #ffffff !important;
+}

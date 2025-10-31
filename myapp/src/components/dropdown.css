@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:wght@400;500&display=swap');
+.menu-trigger.active {
+  background-color: rgba(241, 242, 245, 1);
+}
+.menu-trigger {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;  
+  padding: 6px 12px;          /* 🔹 giống Dashboard */
+  border-radius: 2px;         /* 🔹 giống Dashboard */
+  margin: 0;     /* khoảng cách icon-label giống Dashboard */
+  z-index: 999;
+}
+.Menu-item-danhmuc:has(.menu-item.active) a {
+  background-color: rgba(241, 242, 245, 1);
+}
+.Menu-item-danhmuc.active,
+.Menu-item-dongia.active {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+/* Dropdown hiển thị */
+.menu-item {
+  position: relative;  /* 🔹 container của menu-trigger sẽ là khung tham chiếu */
+  z-index: 999;
+}
+
+.dropdown-menu {
+  position: absolute;  /* vẫn dùng absolute nhưng relative với menu-item */
+  top: 50px;           /* ngay dưới menu-trigger */
+  left: 34px;             /* căn trái với menu-trigger */
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  max-height: 360px;
+  gap: 9px;
+  background:rgba(255, 255, 255, 1);
+  border: 1px solid rgba(223, 226, 234, 1);
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding-bottom: 20px;
+  z-index: 999;
+}
+
+
+/* Các mục trong dropdown */
+.dropdown-item {
+width: 100%;
+font-family: 'Roboto', sans-serif;
+font-weight: 300;           /* Medium */
+font-size: 14px;
+line-height: 100%;          /* tương đương line-height: 1 */
+letter-spacing: 0;          /* hoặc 0em */ /* chữ in hoa */
+font-style: normal;         /* vì Figma ghi Medium, không phải italic */
+height: 16px;
+color: rgba(48, 48, 48, 1);
+padding: 10px 12px 3px 16px;
+z-index: 999;
+}
+
+.dropdown-item:hover {
+  background-color:rgba(241, 242, 245, 1);
+  width: 100%;
+  height: 20px;
+  border-radius: 2px;
+}
+.Wrapper{
+width: 100%;
+height: 28px;
+display: flex;           /* cần để gap hoạt động */
+gap: 10px;
+padding-left: 4px;       /* "ml-1" trong Tailwind ≈ 4px */
+transform: rotate(0deg);
+opacity: 1;
+
+}
+.Menu-item{
+  width: 100%;
+height: 28px;
+display: flex;              /* cần để gap hoạt động */
+gap: 10px;
+padding: 6px 12px;          /* py-1.5 = 6px, px-3 = 12px */
+border-radius: 4px;         /* rounded-sm ≈ 4px */
+transform: rotate(0deg);
+opacity: 1;
+z-index: 999;
+}
+.Text-item{
+  width: 100%;
+height: 16px;
+display: flex;          /* cần để gap hoạt động */
+gap: 10px;
+transform: rotate(0deg);
+opacity: 1;
+z-index: 999;
+}

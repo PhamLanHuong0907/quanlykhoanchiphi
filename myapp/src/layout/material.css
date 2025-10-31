@@ -1,0 +1,89 @@
+.material-table-container {
+  width: 90%;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: white;
+
+}
+
+/* ----- HEADER ----- */
+.material-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 12px;
+  font-weight: 500;
+}
+
+.material-header-left {
+  width: 50%;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  padding-left: 7.7%;
+}
+.material-header-right {
+  width: 80px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.material-header-title {
+  flex: 1;
+  text-align: left;
+  font-weight: 300;
+  color: #333;
+}
+
+/* ----- TABLE ----- */
+.material-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.material-table thead {
+  background-color: rgba(241, 242, 245, 1);
+}
+
+.material-table th,
+.material-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 6.6px 11px;
+  text-align: center;
+}
+
+/* Quy tắc hover này đã đúng, giữ nguyên */
+.material-table tbody tr:hover td {
+  background-color: #f1f1f1;
+}
+
+/* Cột “Tên vật tư, tài sản” - nội dung căn trái */
+.material-table td.left {
+  text-align: center;
+}
+
+/* Hàng nhóm - Đã xóa background-color khỏi 'td' */
+.group-row td {
+  font-weight: 600;
+}
+
+.group-row td.bold {
+  font-weight: 700;
+}
+
+/* Hàng item - Đã xóa background-color khỏi 'td' */
+
+/* === BỔ SUNG SỬA LỖI === */
+
+/* Đặt màu nền cho hàng 'tr' của nhóm */
+.group-row {
+  background-color: #fff;
+}
+
+/* Đặt màu nền cho hàng 'tr' của item */
+.item-row {
+  background-color: #fff;
+}

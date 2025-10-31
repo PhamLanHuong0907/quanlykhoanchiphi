@@ -1,0 +1,41 @@
+.Compare_navbar_mini {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background-color:transparent;
+  height: 32px;
+  width: 720px; 
+  margin-top: 10px;
+  justify-content: space-between; 
+}
+
+.compare-item {
+  width: 56.44px;
+  height: 32px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  color:rgba(0, 0, 0, 1);
+  text-decoration: none;
+  font-weight: 400;
+  border: 1px solid rgba(157, 157, 157, 1);
+  font-size: 16px;
+  font-family: "Inter",sans-serif;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.compare-item:hover {
+  background-color: #e5e7eb;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.compare-item.active {
+  background-color: rgba(241, 242, 245, 1);
+  color:rgba(48, 48, 48, 1);
+  padding-bottom: 2px;
+}

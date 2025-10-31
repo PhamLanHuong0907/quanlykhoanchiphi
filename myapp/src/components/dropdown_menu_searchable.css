@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+/* Tổng thể */
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Label */
+.dropdown-label {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333333;
+}
+
+/* React-select override */
+.dropdown-search__control {
+  border: 1px solid rgba(157, 157, 157, 1);
+  border-radius: 6px !important;
+  max-height: 36px !important;
+  z-index: 2000;
+}
+
+.dropdown-search__placeholder {
+  color: rgba(157, 157, 157, 1) !important;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  z-index: 999;
+}
+
+.dropdown-search__menu {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  z-index: 999;
+}
+
+.dropdown-search__option {
+  cursor: pointer;
+  
+}
+
+.dropdown-search__option--is-focused {
+  background-color: #f3f4f6 !important;
+}
+
+.dropdown-search__option--is-selected {
+  background-color: #2563eb !important;
+  color: white !important;
+}

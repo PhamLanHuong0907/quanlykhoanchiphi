@@ -1,0 +1,55 @@
+.navbar_mini {
+  display: flex;
+  gap: 13px;
+  padding: 8px;
+  background-color:rgba(255, 255, 255, 1);
+  border-radius: 6px;
+  height: 36px;
+  padding: 4px;
+  width: fit-content; 
+}
+
+.nav-item {
+  height: 28px;
+  padding: 6px 12px 6px 12px;
+  border-radius: 2px;
+  margin-bottom: 2px;
+  color:rgba(48, 48, 48, 1);
+  text-decoration: none;
+  font-weight: 400;
+  border: none;
+  transition: background-color 0.2s ease;
+  gap: 10px;
+  font-size: 14px;
+  font-family: "Roboto",sans-serif;
+  padding-bottom: 2px;
+}
+
+.nav-item:hover {
+  background-color: #e5e7eb;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  background-color: rgba(241, 242, 245, 1);
+  color:rgba(48, 48, 48, 1);
+  padding-bottom: 2px;
+}
+@media (max-width: 768px) {
+  .navbar_mini { /* 1. Cho phép container chiếm 100% chiều rộng */
+    overflow-x: auto; /* 2. Bật cuộn ngang khi các item bị tràn */
+    overflow-y: hidden; /* 3. Ẩn cuộn dọc (nếu có) */
+    /* (Tùy chọn) Ẩn thanh cuộn trên một số trình duyệt */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .nav-item{
+    font-size: 12px;
+  }
+
+  /* (Tùy chọn) Ẩn thanh cuộn trên Chrome, Safari */
+  .navbar_mini::-webkit-scrollbar {
+    display: none;
+  }
+}

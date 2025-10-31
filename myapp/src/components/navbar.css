@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:wght@400;500&display=swap');
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;     /* ✅ Ẩn thanh cuộn dọc */
+  overflow-x: hidden;     /* (tuỳ chọn) tránh cuộn ngang */
+  font-family: "Roboto", sans-serif;
+}
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 103px;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 1px 0px 22.1px 0px rgba(173, 192, 216, 1);
+  position: relative;
+  left: 0px;
+  top: 0px;
+  box-sizing: border-box;
+}
+
+/* --- Logo và tên công ty --- */
+.navbar-logo {
+  display: flex;
+  flex-direction: column; /* 🔥 sửa từ column → row */
+  align-items: center;
+
+}
+
+.navbar-logo img {
+  width: 60px;
+  height: 60px;
+}
+
+.navbar-company {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 120.5px;
+  height: 32px;
+}
+
+.company-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* --- Menu ngang ở giữa --- */
+.navbar-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  align-items: center;
+  width: 1000px;
+  height: 48px;
+  justify-content: space-between;
+  border-radius: rounded-md;
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+}
+.Menu-item-dashboard,
+.Menu-item-Danhmuc,
+.Menu-item-Dongia,
+.Menu-item-thongke{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    border-radius: 6px;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    height: 36px;
+align-items: center;  /* Căn giữa theo chiều dọc */
+justify-content: center;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+}
+.icon-dashboard{
+    color: rgba(145, 20, 204, 1);
+}
+.icon-danhmuc{
+    color: #4CAF50;
+}
+.icon-dongia{
+    color: #CC146C;
+}
+.icon-thongke{
+    color: #F3D016;
+}
+a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.menu-danhmuc,
+.menu-dashboard,
+.menu-dongia,
+.menu-thongke{
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+font-style: Regular;
+font-size: 14px;
+line-height: 100%;
+letter-spacing: 0%;
+text-transform: uppercase;
+color: rgba(48, 48, 48, 1);
+
+}
+/* --- User + Icon bên phải --- */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  width: 200.2px;
+height: 48px;
+padding-right: 4px;
+padding-left: 4px;
+gap: 4px;
+
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+  width: 67px;
+height: 19px;
+gap: 1px;
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+font-style: Light;
+font-size: 8px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: right;
+color: rgba(36, 36, 36, 1);
+}
+
+
+.user-avatar {
+  background-color: #eee;
+  border-radius: 50%;
+  padding: 6px;
+  width: 20px;
+height: 20px;
+top: 1.13px;
+margin-left: -5px;
+border-width: 1px;
+
+
+}
+.divider{
+    border-right:#DFE2EA 1.01px solid;
+    width: 2px;
+    height: 20px;
+    margin-left: 4px;  /* thêm khoảng cách với bell */
+}
+.settings{
+    width: 32px;
+height: 24px;
+padding-right: 8px;
+gap: 10px;
+color: rgba(48, 48, 48, 1);
+border: 1px;
+}
+
+.chevron-down {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -4px;
+  color: rgba(48, 48, 48, 1);
+
+}
+
+.Noti {
+  position: relative;  /* 🔥 tạo khung tham chiếu cho text 9+ */
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(48, 48, 48, 1);
+  border: 1px;
+}
+
+.bell {
+  width: 18px;
+  height: 20px;
+  color: rgba(48, 48, 48, 1);
+}
+
+.Example {
+  position: absolute;  /* 🔥 cho phép di chuyển text 9+ so với chuông */
+  bottom: -5px;           /* chỉnh vị trí dính góc trên phải */
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.Textnoti {
+  font-family: "Montserrat",sans-serif;
+  font-weight: 900;
+  font-size: 8px;
+  line-height: 1;
+  text-align: right;
+}
+.Menu-item-danhmuc.active,
+.Menu-item-dongia.active,
+.Menu-item-thongke.active {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* == 3. Màn hình Mobile (<= 768px) == */
+/* GIỮ LẠI MENU ICON, KHÔNG ẨN */
+@media (max-width: 768px) {
+  .navbar-container {
+    height: 93px; /* Giảm chiều cao navbar */
+    padding-left: 8px; /* Giảm padding 2 bên cho vừa */
+    padding-right: 8px;
+  }
+
+  /* 🔥 Thay đổi chính ở đây */
+  .navbar-menu {
+    display: flex;        /* Đảm bảo menu hiển thị */
+    order: 2;             /* Sắp xếp: Menu ở giữa */
+    flex-grow: 1;         /* Cho menu chiếm không gian thừa */
+    justify-content: flex-start; /* Bắt đầu từ bên trái */
+    gap: 4px;             /* 🔥 Thu nhỏ gap như bạn yêu cầu */
+    width: 50%;
+  }
+  .menu-danhmuc,
+.menu-dashboard,
+.menu-dongia,
+.menu-thongke{
+    font-size: 0px ;
+    width: 0px;
+    gap: 3%;
+  }
+  .navbar-logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Ẩn tên công ty để có thêm không gian cho menu */
+  .navbar-company {
+      display: none;
+  }
+  
+  .user-avatar,
+  .divider,
+  .settings,
+  .chevron-down,
+  .bell {
+    gap: 3% ; /* Ẩn thông tin user, chỉ để lại chuông */
+  }
+
+  .navbar-user {
+    gap: 8px;
+    order: 3;             /* Sắp xếp: User (chuông) cuối cùng */
+  }
+
+  /* Ẩn nút hamburger đi vì chúng ta không dùng nữa */
+  .navbar-toggle {
+    display: none; 
+  }
+}

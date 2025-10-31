@@ -1,0 +1,598 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap');
+
+:root {
+  --table-inner-left: 17.6px;
+}
+
+/* Tổng thể */
+.advanced-table-container {
+  width: 96%;
+  font-family: 'Roboto', sans-serif;
+  color: #111827;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 26.4px;
+  table-layout: fixed;
+}
+
+/* Header */
+.table-header {
+  font-size: 26.4px;
+  font-weight: 400;
+  padding-top: 2.2px;
+  padding-bottom: 2.2px;
+  color: rgba(43, 74, 130, 1);
+  height: 30.8px;
+}
+.table-header-path {
+  font-size: 15.4px;
+  font-weight: 400;
+  gap: 6.6px;
+  height: 17.6px;
+  color: rgba(48, 48, 48, 1);
+  padding-top: 10px;
+}
+
+/* =============================
+   TOOLBAR
+   ============================= */
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  gap: 8.8px;
+  flex-wrap: nowrap;
+}
+.toolbar-left,
+.toolbar-center,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+}
+.toolbar-center {
+  display: flex;
+  flex-direction: row;
+  gap: 11px;
+}
+.toolbar-left {
+  margin-left: 0;
+  gap: 8.8px;
+}
+.toolbar-center {
+  flex-grow: 1;
+  justify-content: center;
+  gap: 8.8px;
+  margin-left: 17.6px;
+}
+.toolbar-right {
+  margin-left: 5%;
+  gap: 3.3px;
+}
+/* =============================
+   BUTTON COLORS
+   ============================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6.6px;
+  border-radius: 8.8px;
+  font-size: 15.4px;
+  font-weight: 500;
+  cursor: pointer;
+  height: 35.2px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  width: 99px;
+  text-decoration: none;
+}
+
+.btn-create {
+  background-color: rgba(255, 165, 72, 1);
+  color: #fff;
+  width: 99px;
+  max-width: 99px;
+  min-width: 99px;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.btn-create:hover {
+  background-color: rgba(230, 140, 50, 1);
+  box-shadow: 0 0 10px rgba(255, 165, 72, 0.5);
+}
+.btn-create:active {
+  transform: scale(0.96);
+  background-color: rgba(210, 125, 40, 1);
+}
+.btn-delete {
+  background-color: rgba(200, 35, 51, 1);
+  color: #fff;
+  width: 99px;
+  max-width: 99px;
+  min-width: 99px;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 500;
+ 
+}
+.btn-delete:hover {
+  background-color: rgba(170, 20, 40, 1);
+}
+.btn-delete:active {
+  transform: scale(0.96);
+  background-color: rgba(140, 0, 20, 1);
+}
+.btn-light {
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(48, 48, 48, 1);
+  border: 1px solid rgba(223, 226, 234, 1);
+}
+.btn-disabled {
+  background-color: #d4d5d7;
+  color: rgba(255, 255, 255, 1);
+  width: 99px;
+  max-width: 99px;
+  min-width: 99px;
+  padding: 8px 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  cursor: not-allowed;
+}
+
+/* =============================
+   SEARCH BOX
+   ============================= */
+.search-box {
+  position: relative;
+  width: 50%;
+  height: 35.2px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid rgba(223, 226, 234, 1);
+  border-radius: 6.6px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  height: 100%;
+  padding: 0 35px 0 11px;
+  border: none;
+  outline: none;
+  font-size: 15.4px;
+  color: #111827;
+  background: transparent;
+  z-index: 1; /* đảm bảo không bị che */
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  color: rgba(0, 0, 0, 0.7);
+  pointer-events: none; /* ✅ cho phép click xuyên qua icon */
+  z-index: 2;
+}
+
+
+/* =============================
+   BẢNG + PAGINATION
+   ============================= */
+.table-wrapper {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8.8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.advanced-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15.4px;
+  table-layout: fixed;
+}
+.advanced-table th,
+.advanced-table td {
+  padding: 6.6px 11px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+  vertical-align: middle;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.advanced-table th {
+  background: #f9fafb;
+  font-weight: 500;
+}
+.advanced-table thead{
+  font-weight: 600;
+  font-size: 17px;
+  background-color:rgba(241, 242, 245, 1) ;
+}
+.advanced-table tbody tr td {
+  background-color: #ffffff;
+}
+.advanced-table tbody tr:hover td {
+  background-color: #f9fafb;
+}
+.checkbox-cell {
+  text-align: center;
+  width: 11px;
+  padding-left: 0;
+}
+.advanced-table th:first-child,
+.advanced-table td:first-child {
+  padding-left: 6.6px;
+}
+.advanced-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.advanced-table tbody tr {
+  height: 11px;
+}
+/* Căn chỉnh cột */
+.advanced-table th:first-child,
+.advanced-table td:first-child,
+.advanced-table th:last-child,
+.advanced-table td:last-child {
+  text-align: end;
+}
+
+.advanced-table th:first-child,
+.advanced-table td:first-child,
+.advanced-table th:nth-child(2),
+.advanced-table td:nth-child(2),
+.advanced-table th:last-child,
+.advanced-table td:last-child {
+  text-align: center;
+}
+
+.advanced-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
+.advanced-table td:not(:first-child):not(:nth-child(2)):not(:last-child) {
+  text-align: left;
+}
+.advanced-table tbody th:not(:first-child):not(:nth-child(2)):not(:last-child),
+.advanced-table tbody tr:not(:first-child):not(:nth-child(2)):not(:last-child){
+  text-align: left;
+}
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13.2px 0;
+  font-size: 14.3px;
+  color: #4b5563;
+}
+.pagination .info {
+  color: #6b7280;
+  padding-left: 17.6px;
+  flex: 1;
+  text-align: left;
+}
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8.8px;
+  flex: 1;
+}
+.pagination .page-info {
+  color: #6b7280;
+  padding-right: 17.6px;
+  flex: 1;
+  text-align: right;
+}
+.pagination-controls button {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  padding: 6.6px 11px;
+  border-radius: 6.6px;
+  cursor: pointer;
+}
+.pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.overlay-create {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-body {
+  padding: 0;
+}
+.overlay-edit {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.advanced-table thead th {
+  text-align: center;
+  vertical-align: middle;
+}
+.advanced-table thead th > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6.6px;
+}
+@media (max-width: 1199px) {
+  .table-header {
+    font-size: 22px;
+  }
+  .btn {
+    width: 85px;
+    height: 32px;
+    font-size: 14px;
+  }
+  .search-box input {
+    font-size: 14px;
+  }
+  .advanced-table {
+    font-size: 14px;
+  }
+  .advanced-table thead{
+  font-weight: 600;
+  font-size: 15px;
+}
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 992px) {
+  .table-toolbar {
+    flex-wrap: wrap; /* Cho phép các mục rớt xuống */
+    gap: 12px;
+  }
+  .toolbar-center {
+    width: 100%;    /* Ô tìm kiếm 100% chiều rộng */
+    order: -1;      /* Đẩy ô tìm kiếm lên đầu */
+    margin: 0;
+    justify-content: flex-start;
+  }
+  .advanced-table thead{
+  font-weight: 600;
+  font-size: 13px;
+}
+  .search-box {
+    width: 100%;
+    flex-grow: 1;
+  }
+  .search-box input {
+    width: 100%;
+    /* 🔥 Đây là phần padding bạn yêu cầu cho thanh tìm kiếm */
+    padding-right: 40px; 
+  }
+  .search-icon {
+    right: 10px;    /* Đặt icon vào bên trong input */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .toolbar-left,
+  .toolbar-right {
+    margin: 0;
+    flex-grow: 1; 
+  }
+  .toolbar-right {
+    justify-content: flex-end; 
+  }
+}
+
+/* Mobile (≤768px) - Xử lý Bảng, Phân trang VÀ NÚT ICON */
+@media (max-width: 992px) {
+  .table-toolbar {
+    flex-wrap: wrap; /* Cho phép các mục rớt xuống */
+    gap: 12px;
+  }
+  .toolbar-center {
+    width: 100%; /* Ô tìm kiếm 100% chiều rộng */
+    order: -1; /* Đẩy ô tìm kiếm lên đầu */
+    margin: 0;
+    justify-content: flex-start;
+  }
+  .search-box {
+    width: 50%;
+    flex-grow: 1;
+  }
+  .search-box input {
+    width: 85%;
+    padding-right: 40px; /* Đảm bảo padding cho icon */
+  }
+  .search-icon {
+    right: 10px; /* Đặt icon vào bên trong input */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .toolbar-left,
+  .toolbar-right {
+    margin: 0;
+    flex-grow: 1;
+  }
+  .toolbar-right {
+    justify-content: flex-end;
+  }
+
+  /* ✅ Thêm cuộn ngang cho bảng khi màn hình hẹp */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+}
+
+/* ✅ Mobile (≤ 768px) - YÊU CẦU NÚT ICON-ONLY */
+@media (max-width: 768px) {
+  /* Biến tất cả các nút thành icon */
+  .btn {
+    /* Đặt kích thước vuông */
+    width: 38px;
+    height: 38px;
+    /* Reset padding, min-width */
+    padding: 0;
+    min-width: 38px;
+    max-width: 38px;
+    /* ✅ Ẩn văn bản bên trong nút */
+    font-size: 0;
+    gap: 0;
+  }
+  .search-box{
+    width: 40%;
+  }
+  .search-box input{
+    width: 75%;
+  }
+  .search-box
+  /* Đảm bảo icon (svg) vẫn hiển thị */
+  .btn svg {
+    margin: 0;
+    font-size: 16px; /* Fallback nếu size prop không hoạt động */
+  }
+
+  /* Nút Lọc (trong .toolbar-center) cũng thành icon */
+  .toolbar-center .btn-light {
+    min-width: 38px;
+  }
+
+  /* Điều chỉnh lại thanh toolbar cho màn hình hẹp */
+  .toolbar-left,
+  .toolbar-right {
+    flex-grow: 0; /* Không cho 2 nhóm nút này giãn ra */
+  }
+  .toolbar-right {
+    margin-left: auto; /* Đẩy nhóm nút phải về cuối */
+  }
+  .toolbar-center {
+    gap: 8px;
+  }
+  .toolbar-left {
+    gap: 8px;
+  }
+
+  /* Responsive phân trang */
+  .pagination {
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .pagination .info,
+  .pagination .page-info {
+    text-align: center;
+    padding: 0;
+    width: 100%;
+    flex: none;
+  }
+  .pagination-controls {
+    flex: none;
+  }
+
+  /* Giảm font-size header */
+  .table-header {
+    font-size: 1.35rem; /* 22px */
+  }
+  .table-header-path {
+    font-size: 0.85rem; /* 13.6px */
+  }
+}
+.filter-sort-wrapper {
+  position: relative;
+  display: inline-block; /* Giúp wrapper co lại vừa bằng nút */
+}
+
+/* Kiểu cho nút khi đang active */
+.filter-sort-wrapper .btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sort-popover {
+  position: absolute;
+  top: 100%; /* Hiện ngay bên dưới nút */
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  width: 280px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Khoảng cách giữa các mục */
+}
+
+.sort-popover-header {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.sort-popover label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px; /* Thêm margin cho label */
+  display: block; /* Giúp label và select/radio group tách biệt */
+}
+
+.sort-popover select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box; /* Quan trọng để padding không làm vỡ layout */
+}
+
+.sort-direction-group {
+  display: flex;
+  gap: 16px;
+}
+
+.sort-direction-group label {
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 0; /* Ghi đè margin-bottom của label chung */
+}
+
+.sort-popover-actions {
+  display: flex;
+  justify-content: flex-end; /* Đẩy nút sang phải */
+  margin-top: 8px;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+
+/* Thêm style cho nút "primary" nếu bạn chưa có */
+.btn.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+.btn.btn-primary:hover {
+  background-color: #0056b3;
+}
+.row-expended td,th{
+  text-align: "center"
+}
