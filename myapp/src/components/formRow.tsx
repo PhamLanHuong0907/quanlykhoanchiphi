@@ -4,7 +4,7 @@
 import React, { useRef } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./FormRow.css";
+import "./formrow.css";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import plusIcon from "../../assets/icon_plus.png";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -15,7 +15,7 @@ import {
 import { motion } from "framer-motion";
 import "./bodytable.css";
 import ConfirmDeleteModal from "./confirmdeletemodal";
-import "./ConfirmDeleteModal.css";
+import "./confirmdeletemodal.css"
 import type { JSX } from "react/jsx-dev-runtime";
 import NavbarMini, { type NavItem } from "./navbar_mini";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
