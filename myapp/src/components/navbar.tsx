@@ -9,7 +9,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "./navbar.css";
 import DropdownMenu from "./dropdown";
 
 const Navbar = () => {
