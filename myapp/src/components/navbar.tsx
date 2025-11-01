@@ -11,13 +11,13 @@ import {
 import { Link } from "react-router-dom";
 import "./navbar.css";
 import DropdownMenu from "./dropdown";
-
+import logo from "../assets/logo.png";
 const Navbar = () => {
   return (
     <header className="navbar-container">
       {/* Left: Logo + Company name */}
       <div className="navbar-logo">
-        <img src="/assets/logo.png" alt="Logo" className="navbar-logo" />
+        <img src={logo} alt="Logo" className="navbar-logo" />
         <div className="navbar-company">
           <span className="company-text">CÔNG TY CP Than Hà Lầm</span>
         </div>
